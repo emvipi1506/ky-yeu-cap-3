@@ -1,0 +1,56 @@
+{
+  "className": "Lớp của chúng ta",
+  "schoolYears": "Ba năm cấp 3",
+  "hero": {
+    "eyebrow": "Kỷ yếu thanh xuân",
+    "title": "Thanh xuân của chúng ta",
+    "subtitle": "Một nơi để cất giữ những gương mặt, câu chuyện và khoảnh khắc đã cùng nhau tạo nên ba năm không thể quay lại.",
+    "primaryAction": "Xem hành trình",
+    "secondaryAction": "Đọc tâm thư"
+  },
+  "timeline": [
+    {
+      "grade": "Lớp 10",
+      "title": "Ngày đầu gặp nhau",
+      "description": "Từ những người còn xa lạ, chúng ta bước vào cùng một lớp học và bắt đầu viết những trang đầu tiên của tuổi học trò.",
+      "highlights": [
+        "Buổi học đầu tiên",
+        "Những nhóm bạn đầu tiên",
+        "Lần đầu cùng tham gia hoạt động lớp"
+      ]
+    },
+    {
+      "grade": "Lớp 11",
+      "title": "Khi chúng ta trở nên thân thuộc",
+      "description": "Không còn quá ngại ngùng, lớp học dần đầy ắp tiếng cười, những câu chuyện riêng và các kỷ niệm chỉ chúng ta mới hiểu.",
+      "highlights": [
+        "Những chuyến đi cùng nhau",
+        "Các lần kiểm tra đáng nhớ",
+        "Những trò đùa thành thương hiệu của lớp"
+      ]
+    },
+    {
+      "grade": "Lớp 12",
+      "title": "Năm cuối của một thời thanh xuân",
+      "description": "Chúng ta vừa chạy về phía kỳ thi, vừa cố giữ lại từng ngày cuối cùng được gọi nhau bằng hai tiếng bạn cùng lớp.",
+      "highlights": [
+        "Mùa ôn thi cuối cấp",
+        "Bộ ảnh kỷ yếu",
+        "Buổi học và lời chào cuối cùng"
+      ]
+    }
+  ],
+  "letter": {
+    "eyebrow": "Gửi những người bạn cấp 3",
+    "title": "Một lá thư cho thanh xuân",
+    "draftLabel": "Bản nháp gợi ý — hãy thay bằng những lời thật lòng của bạn",
+    "paragraphs": [
+      "Gửi những người đã cùng tôi đi qua ba năm cấp 3,",
+      "Có lẽ ngày còn ngồi chung lớp, chúng ta chưa từng nghĩ những buổi học bình thường rồi cũng sẽ trở thành điều khiến mình nhớ nhất. Đó là tiếng gọi nhau mỗi sáng, những lần chờ nhau xuống căn tin và cả những tiết học chỉ mong tiếng trống vang lên thật nhanh.",
+      "Chúng ta đã cùng vui, cùng giận, từng hiểu lầm rồi lại làm hòa. Không phải mọi ngày đều hoàn hảo, nhưng chính những điều chưa hoàn hảo ấy đã khiến quãng thời gian này trở thành câu chuyện của riêng chúng ta.",
+      "Sau này mỗi người sẽ đi về một hướng và gặp thêm rất nhiều người mới. Tôi chỉ mong khi vô tình nhìn lại những bức ảnh này, chúng ta vẫn nhớ rằng mình từng có một tập thể, một lớp học và một thời thanh xuân như thế.",
+      "Cảm ơn vì đã xuất hiện trong những năm tháng cấp 3 của tôi. Chúc tất cả chúng ta dù ở đâu cũng sống thật tốt và một ngày nào đó có thể gặp lại nhau với thật nhiều câu chuyện để kể."
+    ],
+    "signature": "— Từ một người bạn cùng lớp"
+  }
+}

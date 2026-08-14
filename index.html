@@ -1,49 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex">
-    <title>Yearbook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#15120f">
+    <title>Kỷ yếu cấp 3 | Thanh xuân của chúng ta</title>
     <link rel="icon" href="image/icon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body onload="onLoad()">
 
-<nav class="navbar">
-    <button class="nav-icon" data-page="book">
-        <img src="image/book.png" height="30" width="30" alt="Yearbook">
+<nav class="navbar" aria-label="Điều hướng chính">
+    <button class="nav-icon" data-page="home" aria-label="Trang mở đầu">
+        <span class="nav-symbol" aria-hidden="true">⌂</span>
+        <span class="nav-label">Mở đầu</span>
     </button>
-    <button class="nav-icon" data-page="gallery">
-        <img src="image/gallery.png" height="30" width="30" alt="Gallery">
+    <button class="nav-icon" data-page="timeline" aria-label="Hành trình ba năm">
+        <span class="nav-symbol" aria-hidden="true">✦</span>
+        <span class="nav-label">Hành trình</span>
+    </button>
+    <button class="nav-icon" data-page="book" aria-label="Thành viên lớp">
+        <img src="image/book.png" width="24" height="24" alt="">
+        <span class="nav-label">Thành viên</span>
+    </button>
+    <button class="nav-icon" data-page="gallery" aria-label="Thư viện ảnh">
+        <img src="image/gallery.png" width="24" height="24" alt="">
+        <span class="nav-label">Kỷ niệm</span>
+    </button>
+    <button class="nav-icon" data-page="letter" aria-label="Tâm thư">
+        <span class="nav-symbol" aria-hidden="true">✉</span>
+        <span class="nav-label">Tâm thư</span>
     </button>
 </nav>
 
-<section id="bookPage" class="page book-page">
-    <nav class="book-navbar">
-        <button id="teachersLabel" class="book-nav-icon" data-type="teacher">Teachers</button>
-        <button id="studentsLabel" class="book-nav-icon" data-type="student">Students</button>
-    </nav>
-    <div class="people-container" id="peopleContainer"></div>
-</section>
+<main>
+    <section id="homePage" class="page home-page" aria-labelledby="heroTitle">
+        <div class="hero-glow hero-glow-left" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow-right" aria-hidden="true"></div>
+        <div class="hero-content">
+            <p id="heroEyebrow" class="eyebrow">Kỷ yếu thanh xuân</p>
+            <p id="classIdentity" class="class-identity">Lớp của chúng ta · Ba năm cấp 3</p>
+            <h1 id="heroTitle">Thanh xuân của chúng ta</h1>
+            <p id="heroSubtitle" class="hero-subtitle"></p>
+            <div class="hero-actions">
+                <button id="primaryAction" class="action-button action-button-primary" data-open-page="timeline">Xem hành trình</button>
+                <button id="secondaryAction" class="action-button action-button-secondary" data-open-page="letter">Đọc tâm thư</button>
+            </div>
+            <div class="memory-stats" aria-label="Những con số kỷ niệm">
+                <div class="memory-stat">
+                    <strong>3</strong>
+                    <span>năm đồng hành</span>
+                </div>
+                <div class="memory-stat">
+                    <strong id="memberCount">45</strong>
+                    <span>thành viên</span>
+                </div>
+                <div class="memory-stat">
+                    <strong>1</strong>
+                    <span>thời thanh xuân</span>
+                </div>
+            </div>
+        </div>
+        <p class="scroll-hint">Cuộn xuống trong từng trang để xem thêm</p>
+    </section>
 
-<section id="galleryPage" class="page gallery-page">
-    <div class="picture-container"></div>
-</section>
+    <section id="timelinePage" class="page content-page timeline-page" aria-labelledby="timelineTitle">
+        <header class="section-heading">
+            <p class="eyebrow">Nhìn lại chặng đường</p>
+            <h2 id="timelineTitle">Ba năm, một hành trình</h2>
+            <p>Từ ngày đầu còn xa lạ đến lần cuối cùng ngồi cạnh nhau trong lớp học.</p>
+        </header>
+        <div id="timelineContainer" class="timeline-container"></div>
+    </section>
 
-<section id="personItemPage" class="page person-item-page">
-    <button class="close-button" aria-label="Close Person" id="personCloseButton"></button>
-    <div class="person-container" id ="personContainer">
-        <img id="personItemOpen" class="person-image-open" src="" alt="">
-        <div id="personName" class="person-name">Person Name</div>
-        <div id="personInfo" class="person-info"></div>
-        <div id="personDescription" class="person-description"></div>
-    </div>
-</section>
+    <section id="bookPage" class="page book-page" aria-label="Danh sách thành viên">
+        <nav class="book-navbar" aria-label="Loại thành viên">
+            <button id="teachersLabel" class="book-nav-icon" data-type="teacher">Thầy cô</button>
+            <button id="studentsLabel" class="book-nav-icon" data-type="student">Thành viên lớp</button>
+        </nav>
+        <div class="people-container" id="peopleContainer"></div>
+    </section>
 
-<section id="galleryItemPage" class="page gallery-item-page">
-</section>
+    <section id="galleryPage" class="page gallery-page" aria-label="Thư viện ảnh kỷ niệm">
+        <header class="section-heading gallery-heading">
+            <p class="eyebrow">Những khoảnh khắc còn lại</p>
+            <h2>Album kỷ niệm</h2>
+        </header>
+        <div class="picture-container"></div>
+    </section>
+
+    <section id="letterPage" class="page content-page letter-page" aria-labelledby="letterTitle">
+        <article class="letter-card">
+            <p id="letterEyebrow" class="eyebrow"></p>
+            <h2 id="letterTitle"></h2>
+            <p id="letterDraftLabel" class="draft-label"></p>
+            <div id="letterContent" class="letter-content"></div>
+            <p id="letterSignature" class="letter-signature"></p>
+        </article>
+    </section>
+
+    <section id="personItemPage" class="page person-item-page">
+        <button class="close-button" aria-label="Đóng thông tin thành viên" id="personCloseButton"></button>
+        <div class="person-container" id="personContainer">
+            <img id="personItemOpen" class="person-image-open" src="" alt="">
+            <div id="personName" class="person-name">Tên thành viên</div>
+            <div id="personInfo" class="person-info"></div>
+            <div id="personDescription" class="person-description"></div>
+        </div>
+    </section>
+
+    <section id="galleryItemPage" class="page gallery-item-page"></section>
+</main>
 
 <script src="script.js"></script>
 </body>

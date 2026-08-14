@@ -1,10 +1,15 @@
 const peopleData = fetch('json/peopleData.json').then(res => res.json());
 const pictureData = fetch('json/pictureData.json').then(res => res.json());
 const languageData = fetch('json/languageData.json').then(res => res.json());
+const siteContentData = fetch('json/siteContent.json').then(res => res.json());
 let intervalId;
 
 document.querySelectorAll('.nav-icon').forEach(button => {
     button.addEventListener('click', () => showPage(button.dataset.page));
+});
+
+document.querySelectorAll('[data-open-page]').forEach(button => {
+    button.addEventListener('click', () => showPage(button.dataset.openPage));
 });
 
 document.querySelectorAll('.book-nav-icon').forEach(button => {
@@ -15,7 +20,20 @@ document.getElementById('personCloseButton').addEventListener('click', closePers
 
 function showPage(pageId) {
     document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
-    document.getElementById(pageId + 'Page').style.display = 'block';
+    const targetPage = document.getElementById(pageId + 'Page');
+
+    if (!targetPage) {
+        return;
+    }
+
+    targetPage.style.display = 'block';
+    targetPage.scrollTop = 0;
+
+    document.querySelectorAll('.nav-icon').forEach(button => {
+        const isActive = button.dataset.page === pageId;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-current', isActive ? 'page' : 'false');
+    });
 }
 
 async function loadPeople(type) {
@@ -23,6 +41,10 @@ async function loadPeople(type) {
     const container = document.querySelector('#bookPage .people-container');
     container.innerHTML = '';
     document.getElementById('peopleContainer').scrollTop = 0;
+
+    document.querySelectorAll('.book-nav-icon').forEach(button => {
+        button.classList.toggle('active', button.dataset.type === type);
+    });
 
     const people = type === 'teacher' ? data.teachers : data.students;
     people.forEach(person => {
@@ -262,10 +284,71 @@ function closePerson() {
 }
 
 function onLoad() {
-    showPage('book');
-    loadPeople('student')
+    showPage('home');
+    loadPeople('student');
     loadLanguage();
+    loadSiteContent();
     waitForPictures();
+}
+
+async function loadSiteContent() {
+    const [content, people] = await Promise.all([siteContentData, peopleData]);
+
+    document.getElementById('classIdentity').textContent = `${content.className} · ${content.schoolYears}`;
+    document.getElementById('heroEyebrow').textContent = content.hero.eyebrow;
+    document.getElementById('heroTitle').textContent = content.hero.title;
+    document.getElementById('heroSubtitle').textContent = content.hero.subtitle;
+    document.getElementById('primaryAction').textContent = content.hero.primaryAction;
+    document.getElementById('secondaryAction').textContent = content.hero.secondaryAction;
+    document.getElementById('memberCount').textContent = people.students.length;
+
+    const timelineContainer = document.getElementById('timelineContainer');
+    timelineContainer.replaceChildren();
+
+    content.timeline.forEach(milestone => {
+        const timelineItem = document.createElement('article');
+        timelineItem.className = 'timeline-item';
+
+        const grade = document.createElement('div');
+        grade.className = 'timeline-grade';
+        grade.textContent = milestone.grade;
+
+        const card = document.createElement('div');
+        card.className = 'timeline-card';
+
+        const title = document.createElement('h3');
+        title.textContent = milestone.title;
+
+        const description = document.createElement('p');
+        description.textContent = milestone.description;
+
+        const highlights = document.createElement('ul');
+        highlights.className = 'timeline-highlights';
+
+        milestone.highlights.forEach(highlight => {
+            const item = document.createElement('li');
+            item.textContent = highlight;
+            highlights.appendChild(item);
+        });
+
+        card.append(title, description, highlights);
+        timelineItem.append(grade, card);
+        timelineContainer.appendChild(timelineItem);
+    });
+
+    document.getElementById('letterEyebrow').textContent = content.letter.eyebrow;
+    document.getElementById('letterTitle').textContent = content.letter.title;
+    document.getElementById('letterDraftLabel').textContent = content.letter.draftLabel;
+    document.getElementById('letterSignature').textContent = content.letter.signature;
+
+    const letterContent = document.getElementById('letterContent');
+    letterContent.replaceChildren();
+
+    content.letter.paragraphs.forEach(paragraph => {
+        const paragraphElement = document.createElement('p');
+        paragraphElement.textContent = paragraph;
+        letterContent.appendChild(paragraphElement);
+    });
 }
 
 async function waitForPictures(){

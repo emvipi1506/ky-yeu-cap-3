@@ -1,4 +1,14 @@
-## How to Create Your Own Page  
+## Chỉnh sửa nội dung kỷ yếu
+
+- `json/siteContent.json`: tên lớp, phần mở đầu, timeline lớp 10-11-12 và tâm thư.
+- `json/peopleData.json`: thông tin thầy cô và 45 thành viên.
+- `json/pictureData.json`: ảnh hoặc video trong album kỷ niệm.
+- `json/languageData.json`: nhãn giao diện tiếng Việt.
+
+Phần tâm thư hiện là bản nháp gợi ý. Hãy sửa mảng `letter.paragraphs` và trường
+`letter.signature` trong `json/siteContent.json` trước khi xem đó là nội dung chính thức.
+
+## How to Create Your Own Page
 
 Here is a step-by-step tutorial on how to create your own page using my template:  
 
