@@ -1,13 +1,13 @@
 {
-  "teachers": "Teachers",
-  "students": "Students",
-  "height": "Height",
-  "birthday": "Birthday",
-  "nationality": "Nationality",
-  "gender": "Gender",
-  "rating": "Rating",
-  "personality": "Personality",
-  "lesson": "Lesson",
-  "grading": "Grading",
-  "knowledge": "Knowledge"
+  "teachers": "Thầy cô",
+  "students": "Thành viên lớp",
+  "height": "Chiều cao",
+  "birthday": "Ngày sinh",
+  "nationality": "Quê quán",
+  "gender": "Giới tính",
+  "rating": "Đánh giá",
+  "personality": "Tính cách",
+  "lesson": "Bài giảng",
+  "grading": "Chấm điểm",
+  "knowledge": "Kiến thức"
 }
