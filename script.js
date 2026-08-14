@@ -55,9 +55,12 @@ async function handlePersonClick(person) {
     document.getElementById('personDescription').textContent = person.description;
 
     if (isStudent(person)) {
+        const age = calculateAge(person.birthday);
+        const birthdayText = age === null ? person.birthday : `${person.birthday} (${age})`;
+
         document.getElementById('personInfo').innerHTML += `
             <div id="personHeight" class="person-attribute">${languageDataLoaded.height}: ${person.height}</div>
-            <div id="personBirthday" class="person-attribute">${languageDataLoaded.birthday}: ${person.birthday} (${calculateAge(person.birthday)})</div>
+            <div id="personBirthday" class="person-attribute">${languageDataLoaded.birthday}: ${birthdayText}</div>
             <div id="personNationality" class="person-attribute">${languageDataLoaded.nationality}: ${person.nationality}</div>
             <div id="personGender" class="person-attribute">${languageDataLoaded.gender}: ${person.gender}</div>
         `;
@@ -110,10 +113,22 @@ async function handlePersonClick(person) {
 }
 
 function calculateAge(birthdayString) {
+    if (typeof birthdayString !== 'string') {
+        return null;
+    }
+
     const parts = birthdayString.split('.');
+    if (parts.length !== 3) {
+        return null;
+    }
+
     const day = parseInt(parts[0], 10);
     const month = parseInt(parts[1], 10) - 1;
     const year = parseInt(parts[2], 10);
+
+    if (!Number.isInteger(day) || !Number.isInteger(month) || !Number.isInteger(year)) {
+        return null;
+    }
 
     const today = new Date();
     const todayYear = today.getFullYear();
